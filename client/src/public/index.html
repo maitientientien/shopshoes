@@ -137,7 +137,48 @@
       </div>
     </div>
   </section>
-    
+    <!-- ------update cartPage and overlay----- -->
+<section class="cartPage">
+    <div class="cartPage__content">
+      <div class="cartPage__header">
+        <h3>Giỏ hàng</h3>
+        <i class="fas fa-x cartPage__close"></i>
+      </div>
+      <div class="cartPage__body">
+        <div class="cartPage__list">
+          <table>
+            <thead>
+              <tr class="header-cart">
+                <th>
+                  <div class="custom-checkbox">
+                    <input type="checkbox" id="SelectAll">
+                    <label for="SelectAll" class="check-box"></label>
+                  </div>
+                </th>
+                <th>Tên sản phẩm</th>
+                <th>Đơn giá</th>
+                <th style="width: 16%">Số lượng</th>
+                <th style="width: 18%">Thành tiền</th>
+                <th style="width: 15%">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody class="cart-body">   
+            </tbody>
+          </table>
+        </div>
+        <div class="cartPage__total">
+          <p class="total">Tổng tiền: <span id="totalProduct">1.000.000đ</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="cartPage__footer">
+      <button class="btn btn-danger btn-deleteCheck">Xóa</button>
+      <button class="btn btn-success btn-paidCart">Thanh toán</button>
+    </div>
+  </section>
+ <div class="cartPage__overlay"></div>
+  </main>
+
   
 <script src="../components/scroll.js"></script>
 <!-- <script src="../components/theme.js"></script> -->
