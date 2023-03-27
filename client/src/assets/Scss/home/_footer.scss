@@ -1,0 +1,72 @@
+.footer {
+  padding-top: 8rem;
+  background: #0e1b1f;
+  color: var(--light__color);
+  &__links {
+    @include grid(3rem, repeat(4, 1fr));
+  }
+
+  &__item {
+    @include flexbox(flex-start, flex-start, column);
+    color: #fff;
+    ul {
+      margin-top: 2rem;
+      li {
+        @include flexbox(flex-start, flex-start);
+        padding: 1rem 0;
+
+        i {
+          width: 4rem;
+          height: 4rem;
+          background: var(--background);
+          background-size: 200%;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 4rem;
+          font-size: 1.8rem;
+          color: #fff;
+        }
+
+        span {
+          line-height: 1.5;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    h3 {
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      font-size: 2.4rem;
+      position: relative;
+      color: #fff;
+      &::before,
+      &::after {
+        content: "";
+        height: 5px;
+        background: var(--background);
+        position: absolute;
+        border-radius: 1rem;
+        bottom: 0;
+      }
+      &::before {
+        width: 1.8rem;
+      }
+      &::after {
+        width: 5rem;
+        left: 2.5rem;
+      }
+    }
+    a {
+      padding: 1.8rem 0;
+      font-size: 1.6rem;
+      color: var(--six__color);
+      transition: all 0.5s ease;
+      &:hover {
+        color: var(--five__color);
+      }
+    }
+    i {
+      margin-right: 1rem;
+    }
+  }
+}

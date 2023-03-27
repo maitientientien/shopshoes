@@ -1,0 +1,94 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 80rem;
+  // margin-top: 8rem;
+  background: url(../../images/bg1.png);
+  background-position: center;
+  background-size: cover;
+  .container {
+    display: flex;
+  }
+
+  &__content {
+    padding-top: 12rem;
+  }
+
+  &__text {
+    h1 {
+      color: var(--four__color);
+      text-transform: uppercase;
+
+      span {
+        font-size: 11rem;
+      }
+    }
+
+    h3 {
+      color: var(--third__color);
+    }
+  }
+
+  &__image {
+    flex-grow: 1;
+
+    img {
+      // đảo ngược ảnh
+      transform: scaleX(-1) rotate(30deg) translate(14%, 20%);
+      margin-top: -40%;
+      animation: animated 2s linear alternate infinite;
+      pointer-events: none;
+      @keyframes animated {
+        100% {
+          transform: scaleX(-1) rotate(30deg) translate(20%, 20%);
+        }
+      }
+    }
+  }
+
+  &__navbar {
+    li {
+      margin: 10rem 0rem 0rem -3rem;
+      transform: rotate(270deg);
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__price {
+    @include flexbox(center, flex-end);
+
+    &--addCart {
+      color: var(--primary__color);
+      text-align: center;
+
+      h3 {
+        font-size: 3rem;
+      }
+
+      p {
+        color: var(--third__color);
+      }
+    }
+
+    i {
+      font-size: 2.5rem;
+      color: var(--primary__color);
+      cursor: pointer;
+
+      &.fa-angle-left {
+        padding-right: 2rem;
+      }
+
+      &.fa-angle-right {
+        padding-left: 2rem;
+      }
+    }
+  }
+}

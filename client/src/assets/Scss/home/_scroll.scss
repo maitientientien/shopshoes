@@ -1,0 +1,33 @@
+html{
+  scroll-behavior: smooth;
+}
+.scroll{
+    position: fixed;
+    width: 5rem;
+    height: 5rem;
+    background: var(--background);
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99999;
+    transition: var(--transition);
+    border-radius: 50%;
+    text-align: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    
+    i{
+      color: #fff;
+      font-size: 2rem;
+    }
+    &.active{
+      opacity: 0.5;
+      visibility: visible;
+      &:hover{
+      opacity: 1;
+      cursor: pointer;
+      
+    }
+    }
+}

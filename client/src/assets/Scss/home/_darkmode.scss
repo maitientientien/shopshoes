@@ -1,0 +1,28 @@
+.theme{
+  position: fixed;
+  width: 50px;
+  height: 30px;
+  background: var(--background);
+  top: 50%;
+  transform: translatey(-50%);
+  z-index: 999999;
+  text-align: center;
+  i{
+    cursor: pointer;
+    color: #fff;
+  }
+
+}
+.dark-mode{
+  --light__color: #000;
+  --primary__color: #fff;
+  // background: var(--primary__color);
+  &::-webkit-scrollbar-track {
+  background-color: #000;
+}
+  .carousel{
+    background: url(../../images/bg.png);
+    background-position: center;
+    background-size: 140%;
+  }
+}
