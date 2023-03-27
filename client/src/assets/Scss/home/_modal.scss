@@ -1,0 +1,53 @@
+.swal2-container.swal2-backdrop-show,
+.swal2-container.swal2-noanimation {
+  z-index: 9999999999 !important;
+}
+
+.swal2-popup {
+  width: 50rem !important;
+  font-size: 2rem !important;
+}
+
+.swal2-popup .swal2-actions {
+  width: 100%;
+  justify-content: space-around !important;
+}
+
+button.swal2-cancel.btn.btn-danger,
+button.swal2-confirm.btn.btn-success {
+  font-size: 1.8rem !important;
+  padding: 1rem 4rem !important;
+}
+.swal2-icon.swal2-question.swal2-icon-show,
+.swal2-icon.swal2-success.swal2-icon-show,
+.swal2-icon.swal2-error.swal2-icon-show {
+  margin-top: -20%;
+}
+.swal2-icon.swal2-question{
+  color: var(--light__color)!important;
+  background: var(--color2)!important;
+  border-color: var(--color2)!important;
+}
+.swal2-success-circular-line-right,
+.swal2-success-circular-line-left,
+.swal2-success-fix {
+  background: none!important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: var(--color1);
+  background: var(--color1);
+}
+.swal2-icon.swal2-success [class^=swal2-success-line]{
+  background-color: #fff!important;
+}
+.swal2-popup .swal2-title{
+  color: var(--color2);
+}
+.swal2-icon.swal2-error{
+  background: var(--color4);
+  color: var(--color4);
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+  background-color: #fff;
+}

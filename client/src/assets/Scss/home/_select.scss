@@ -1,0 +1,31 @@
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+
+
+/* <select> styles */
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  padding: 0 4em 0 1em;
+  color: #fff;
+  border-radius: 0.25em;
+  background: var(--background);
+  cursor: pointer;
+  /* <option> colors */
+  option {
+    color: inherit;
+    background-color: var(--five__color);
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+}
