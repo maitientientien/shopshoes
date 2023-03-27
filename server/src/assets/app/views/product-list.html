@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Jekyll v4.1.1" />
+    <title>Dashboard Product List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.5/examples/dashboard/"
+    />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.5.0/sweet-alert.min.css"> -->
+    <!-- Bootstrap core CSS -->
+    <link
+      href="../../assets/lib/css/bootstrap/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/foodList.css" />
+    <link rel="stylesheet" href="../../assets/css/loading.css" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../../assets/css/dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/style.css">
+    <!-- <link href="../../assets/css/foodForm.css" rel="stylesheet"> -->
+  </head>
+
+  <body>
+    <!-- <div id="loading">
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div> -->
+    <nav
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
+        >CyberAdmin</a
+      >
+      <input
+        class="form-control form-control-dark w-100"
+        type="text"
+        placeholder="Nhập tên, thể loại cần tìm kiếm"
+        aria-label="Search"
+      />
+     
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="./product.html">
+                  <i class="fas fa-plus"></i>
+                  Thêm sản phẩm
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./product-list.html">
+                  <i class="fa fa-list"></i>
+                 Danh sách sản phẩm
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <h2 class="text-center mt-5">Danh Sách Sản Phẩm</h2>
+          <!-- Button trigger modal -->
+
+          <div class="row">
+            <div class="col">
+              <a href="./product.html" id="btnThem"
+                class="btn btn-warning mb-3 text-white">Thêm mới sản phẩm</a>
+            </div>
+          </div>
+
+          <div class="table-responsive foodTable">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr class="bg-warning text-white">
+                  <th>Tên</th>
+                  <th>Giá</th>
+                  <th>Mô tả</th>
+                  <th>Thể loại</th>
+                  <th>Số lượng</th>
+                  <th>Hình ảnh</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyProduct">
+                
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+     <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sửa Sản Phẩm</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation" id="productForm">
+              <div class="row">
+                <!-- Tên SP -->
+                <div class="col-md-6 mb-3">
+                  <label for="tenSP">Tên Sản Phẩm</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tenSP"
+                    placeholder="Nhập tên sản phẩm"
+                    required
+                  />
+                  <div id="invalidTen" class="invalid-form"></div>
+                </div>
+                <!-- Giá -->
+
+                <div class="col-md-6 mb-3">
+                  <label for="giaSP">Giá Sản Phẩm</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="giaSP"
+                    placeholder="Nhập giá"
+                    value=""
+                    required
+                  />
+                  
+                </div>
+
+                <!-- thông tin sản phầm -->
+
+                <div class="col-md-6 mb-3">
+                  <label for="theloaiSp">Thể loại sản phẩm</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="theloaiSp"
+                    placeholder="Thể loại sản phẩm"
+                    value=""
+                    required
+                  />
+                  
+                </div>
+                <!-- số lượng -->
+                <div class="col-md-6 mb-3">
+                  <label for="soLuong">Số lượng</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="soLuong"
+                    placeholder="Số lượng"
+                    value=""
+                    required
+                  />
+                  
+                </div>
+                <!-- Link sản phẩm  -->
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="hinhSP">Hình Sản Phẩm</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="hinhSP"
+                      placeholder="Nhập link hình ảnh"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="moTa">Mô Tả</label>
+                <textarea class="form-control" id="moTa" rows="3"></textarea>
+                <div id="invalidMoTa" class="invalid-form"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              id="btnClose"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-warning" id="btnCapNhat" onclick="updateSubmit()">
+              Cập Nhật
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../assets/lib/js/Jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="../../assets/lib/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- <script type="module" src="../main/ProductMain.js"></script> -->
+    <script  src="../controllers/index.js"></script>
+  </body>
+</html>
