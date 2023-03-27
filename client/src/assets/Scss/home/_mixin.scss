@@ -1,0 +1,35 @@
+@mixin size($width,$height:$width) {
+  width: $width;
+  height: $height;
+}
+@mixin flexbox($align:flex-start,$justify:flex-start,$flex-direction:row,$wrap:nowrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $flex-direction;
+  flex-wrap: $wrap;
+}
+@mixin  grid($gap,$column: repeat(3,1fr),$justify:stretch){
+  display: grid;
+  grid-template-columns: $column;
+  gap: $gap;
+  justify-items: $justify;
+}
+@mixin text($fz:16px,$fw:400,$color:#fff){
+  font-size: $fz;
+  font-weight: $fw;
+  color: $color;
+}
+@mixin button($background,$padding,$border:none,$border-radius,$font-size,$font-weight,$color,$transition,$bg-hover,$color-hover,$border-hover:none){
+    background: $background;
+    padding: $padding;
+    border: $border;
+    border-radius: $border-radius;
+    @include text($font-size,$font-weight,$color);
+    transition: $transition;
+    &:hover{
+      background: $bg-hover;
+      color: $color-hover;
+      border: $border-hover;
+    }
+}

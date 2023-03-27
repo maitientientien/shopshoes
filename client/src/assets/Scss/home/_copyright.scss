@@ -1,0 +1,19 @@
+.copyright {
+  padding: 1rem 0;
+  color: #fff;
+  &__content {
+    @include flexbox(center, space-between);
+  }
+  &__social {
+    i {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 3rem;
+    }
+  }
+  span {
+    color: var(--five__color);
+  }
+}

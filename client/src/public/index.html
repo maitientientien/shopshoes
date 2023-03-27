@@ -33,6 +33,238 @@
     });
     </script>
 
+
+</head>
+<body id="particles-js">
+  <div class="theme"><i class="fas fa-sun theme-icon"></i></div>
+  <header class="header">
+    <div class="navbar">
+      <div class="container">
+        <div class="navbar__left">
+          <button class="d-none">
+            <img src="../assets/images/toggleMenu.png" alt="toggleMenu">
+          </button>
+          <img src="../assets/icons/icon1.png" alt="icon">
+        </div>
+        <nav style="flex-grow: 1;">
+          <ul class="navbar__list">
+            <li class="navbar__item">
+              <a class="navbar__link active" href="./index.html">HOME</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">MEN</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">WOMEN</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">KIDS</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="navbar__right">
+          <div class="cart">
+            <img src="../assets/icons/bag.png" alt="bag">
+            <span class="quantityOfProducts"></span>
+          </div>
+        </div>
+        <div class="search">
+          <div class="search__group">
+            <input placeholder="Tìm kiếm sản phẩm" type="text" class="search__input">
+            <button type="submit" class="btn__search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+<!-- carousel -->
+<main>
+    <section class="carousel">
+      <div class="container carousel__content">
+        <nav class="carousel__navbar">
+          <ul class="carousel__navbar__list">
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">Delivery</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">pakaging</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">faq</a>
+            </li>
+          </ul>
+        </nav>
+            <div class="carousel__text">
+              <img src="../assets/images/Nike_Logo.png" alt="Nike_Logo">
+              <h1><span>Boring</span><br>shoes?</h1>
+              <h3>Let Us HELP you fix it..</h3>
+              <button class="btn_primary">Explore our store</button>
+            </div>
+            <div class="carousel__image">
+                  <img src="../assets/images/shoe1.png" alt="shoe1">
+              <div class="carousel__price">
+                <i class="fa-solid fa-angle-left"></i>
+                <div class="carousel__price--addCart">
+                  <h3>Nike air max III</h3>
+                  <p>$189</p>
+                  <button class="btn_second">Buy Now</button>
+                </div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- product -->
+<section class="product">
+   <div class="container">
+     <h1 class="text-linear">Products</h1>
+     <select class="product__select" id="product__select">
+      <option selected value="All">All</option>
+      <!-- <option value="Men">Men</option>
+      <option value="Women">Women</option> -->
+     </select>
+     <select class="price__select" id="price__select" >
+      <option selected value="All">Giá</option>
+      <option value="PriceDown">Giá từ cao đến thấp</option>
+      <option value="PriceUp">Giá từ thấp đến cao</option>
+     </select>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 product__list">
+      </div>
+      <div class="view-product">
+      </div>
+    </div>
+  </section>
+    <!-- ------update cartPage and overlay----- -->
+<section class="cartPage">
+    <div class="cartPage__content">
+      <div class="cartPage__header">
+        <h3>Giỏ hàng</h3>
+        <i class="fas fa-x cartPage__close"></i>
+      </div>
+      <div class="cartPage__body">
+        <div class="cartPage__list">
+          <table>
+            <thead>
+              <tr class="header-cart">
+                <th>
+                  <div class="custom-checkbox">
+                    <input type="checkbox" id="SelectAll">
+                    <label for="SelectAll" class="check-box"></label>
+                  </div>
+                </th>
+                <th>Tên sản phẩm</th>
+                <th>Đơn giá</th>
+                <th style="width: 16%">Số lượng</th>
+                <th style="width: 18%">Thành tiền</th>
+                <th style="width: 15%">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody class="cart-body">   
+            </tbody>
+          </table>
+        </div>
+        <div class="cartPage__total">
+          <p class="total">Tổng tiền: <span id="totalProduct">1.000.000đ</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="cartPage__footer">
+      <button class="btn btn-danger btn-deleteCheck">Xóa</button>
+      <button class="btn btn-success btn-paidCart">Thanh toán</button>
+    </div>
+  </section>
+ <div class="cartPage__overlay"></div>
+  </main>
+  <!-- footer -->
+<footer class="footer">
+    <!-- <div class="container"> -->
+      <div class="container">
+        <section class="footer__links">
+            <div class="footer__item">
+              <img src="../assets/icons/icon.png" alt="logo">
+              <ul>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <span>1800-123-4567 <br>
+                    +91 987-654-3210
+                  </span>
+        
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <span>info@example.com <br>
+                    services@gmail.com
+        
+                  </span>
+        
+                </li>
+                <li>
+                  <i class="fas fa-location-dot"></i>
+                  <span>Demo Address #8901 Marmora <br>
+                    Road City
+                  </span>
+        
+                </li>
+              </ul>
+        
+            </div>
+            <div class="footer__item">
+              <h3>Our links</h3>
+              <a href="#">
+                <i class="fas fa-chevron-right"></i>Home</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>About Us</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Services</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Team</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Blog</a>
+        
+              </div>
+              <div class="footer__item">
+                <h3>Our Services</h3>
+                <a href="#">
+                  <i class="fas fa-chevron-right"></i>Strategy & Research</a>
+                  <a href="#"><i class="fas fa-chevron-right"></i>Web Development</a>
+                  <a href="#"><i class="fas fa-chevron-right"></i>Web Solution</a>
+                  <a href="#"><i class="fas fa-chevron-right"></i>Digital Marketing</a>
+                  <a href="#"><i class="fas fa-chevron-right"></i>App Design</a>
+        
+                </div>
+                <div class="footer__item">
+                  <h3>Our links</h3>
+                  <a href="#">
+                    <i class="fas fa-chevron-right"></i>FAQ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i>Portfolio</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i>Privacy Policy</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i>Team & Conditions</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i>Support</a>
+        
+                  </div>
+        </section>
+              <!-- </div> -->
+        <section class="copyright">
+          <div class="copyright__content">
+            <div class="copyright__text">
+              <p>Copyright © 2022 <span>Henry Lê Nguyễn</span> . All rights reserved.</p>
+            </div>
+            <div class="copyright__social">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+  </footer>
+
+  
 <script src="../components/scroll.js"></script>
 <!-- <script src="../components/theme.js"></script> -->
 <script type="module"  src="../components/home/index.js"></script>

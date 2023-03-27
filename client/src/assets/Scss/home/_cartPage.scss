@@ -1,0 +1,116 @@
+
+.cartPage {
+  overflow-y: scroll;
+  padding: 1rem;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  width: 60%;
+  // @include flexbox(flex-start,space-between,column);
+  z-index: 99999;
+  padding: 2rem;
+  transition: var(--transition);
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2); // x y blur scale
+  &__header{
+    width: 100%;
+    @include flexbox(center,space-between);
+    margin-bottom: 5rem;
+  }
+  td,
+  tr,
+  th,
+  table {
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  th {
+    border-bottom: 1px solid;
+    color: var(--six__color);
+    font-weight: 600;
+  }
+  h3 {
+    text-align: center;
+    font-size: 3rem;
+  }
+  &__body{
+    height: 100%;
+    @include flexbox(flex-start,space-between,column);
+    
+  }
+  .amount {
+    display: flex;
+    #mount {
+      border-bottom: 1px solid var(--seven__color);
+      width: 50%;
+      text-align: center;
+      border-top: 1px solid var(--seven__color);
+    }
+    #plus,
+    #minus {
+      border: 1px solid var(--seven__color);
+      background: var(--light__color);
+      color: #999999;
+      font-size: 13px;
+      width: 50%;
+    }
+  }
+  .product__name {
+    @include flexbox(center);
+    max-width: 250px;
+    img {
+      width: 30%;
+    }
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-left: 1rem;
+    }
+  }
+  &__overlay{
+    display: none;
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 77777;
+  }
+  &.active{
+    right: 0;
+  }
+  &__footer{
+    width: 100%;
+    text-align: right;
+  }
+  &__total{
+    width: 100%;
+    text-align: right;
+    .total{
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+  &__close{
+    // @include size(3rem,3rem);
+    font-size: 2rem;
+    // background: var(--background);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 3rem;
+    color: #000;
+  }
+  .btn{
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+  .cart__delete{
+    color: var(--color4);
+    font-size: 3rem;
+  }
+
+}
