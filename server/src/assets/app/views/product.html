@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Jekyll v4.1.1" />
+    <title>Dashboard Add Product</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.5/examples/dashboard/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="../../assets/lib/css/bootstrap/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../../assets/css/dashboard.css" rel="stylesheet" />
+    <link href="../../assets/css/productForm.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/style.css">
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
+        >CyberProducts</a
+      >
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="./product.html">
+                  <i class="fas fa-plus"></i>
+                 Thêm mới sản phẩm
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./product-list.html">
+                  <i class="fa fa-list"></i>
+                  Danh sách sản phẩm
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <nav class="my-3" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="./product-list.html">Danh sách sản phẩm</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Thêm mới
+              </li>
+            </ol>
+          </nav>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header text-center">
+                  <h2>Thêm mới sản phẩm</h2>
+                </div>
+                <div class="card-body">
+                  <form class="needs-validation" id="productForm">
+                    <div class="row">
+                      <!-- ID -->
+                      <!-- Tên SP -->
+                      <div class="col-md-6 mb-3">
+                        <label for="tenSP">Tên Sản Phẩm:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="tenSP"
+                          placeholder="Nhập tên sản phẩm"
+                          required
+                        />
+                        <div id="invalidTen" class="invalid-form"></div>
+                      </div>
+
+                      <!-- giá -->
+                      <div class="col-md-6 mb-3">
+                        <label for="giaSP">Giá Sản Phẩm :</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="giaSP"
+                          placeholder="Nhập giá"
+                          value=""
+                          required
+                        />
+                        <div id="invalidGia" class="invalid-form"></div>
+                      </div>
+
+                      <!-- thông tin sản phẩm  -->
+
+                      <div class="col-md-6 mb-3">
+                        <label for="theloaiSp">Thể loại sản phẩm</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="theloaiSp"
+                          placeholder="Nhập Thể loại sản phẩm"
+                          value=""
+                          required
+                        />
+                      </div>
+                      <div id="invalidTheLoai" class="invalid-form"></div>
+                      <!-- số lượng sản phẩm  -->
+
+                      <div class="col-md-6 mb-3">
+                        <label for="soLuong">Số lượng:</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="soLuong"
+                          placeholder="Nhập số lượng"
+                          value=""
+                          required
+                        />
+                      </div>
+
+                      <!-- Hình -->
+                      <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                          <label for="hinhSP">Hình Sản Phẩm</label>
+                          <input
+                            type="text"
+                            id="hinhSP"
+                            class="form-control"
+                            placeholder="Nhập link hình ảnh"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Mô tả -->
+                    <div class="mb-3">
+                      <label for="moTa">Mô Tả</label>
+                      <textarea
+                        class="form-control"
+                        id="moTa"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                    <hr class="mb-4" />
+                    <button
+                      id="btnThemSP"
+                      class="btn btn-warning btn-lg btn-block"
+                      type="submit"
+                    >
+                      Thêm Sản Phẩm
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/lib/js/Jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="../../assets/lib/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../controllers/AddProductControllers.js"></script>
+  </body>
+</html>
