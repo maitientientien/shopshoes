@@ -1,6 +1,6 @@
 MÔN CÔNG CỤ VÀ MÔI TRƯỜNG PHÁT TRIỂN PHẦN MỀM
 
-ĐỀ TÀI: QUẢN LÍ SHOPSHOES BẰNG CÔNG CỤ JIRA
+ĐỀ TÀI: QUẢN LÍ SHOPSHOES
 
 THÀNH VIÊN:
 
