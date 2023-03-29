@@ -140,4 +140,48 @@ function renderOption(){
   
 }
 
+// ---------------------------------------------Sắp xếp theo giá-----------------------
+export function sortPrice(){
+  let tempt = [];
+  let e = document.getElementById("price__select");
+  e.addEventListener("change", () => {
+    let giaTri = e.options[e.selectedIndex].text;
+    let down = giaTri.toLowerCase().includes("cao đến thấp");
+    productList.innerHTML = "";
+    viewProductList.innerHTML = "";
+
+      if(down){
+        for(let i=0;i<products.length;i++){
+          for(let j=i+1;j<products.length;j++){
+            if(products[j].price>products[i].price){
+              tempt = products[j];
+              products[j] = products[i];
+              products[i] = tempt;
+            }
+            
+          }
+          renderProduct(products[i]);
+          showView();
+
+          // console.log(products[i]);
+        }
+      }
+      else{
+         for (let i = 0; i < products.length; i++) {
+           for (let j = i + 1; j < products.length; j++) {
+             if (products[j].price < products[i].price) {
+               tempt = products[j];
+               products[j] = products[i];
+               products[i] = tempt;
+             }
+
+           }
+           renderProduct(products[i]);
+            showView();
+
+           // console.log(products[i]);
+         }
+      }
+  })
+}
 
