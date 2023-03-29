@@ -185,3 +185,44 @@ export function sortPrice(){
   })
 }
 
+// -------------------------------- Khi window load xong--------------------------
+window.onload = ()=>{
+  let productListFromLocal;
+  getFullProduct();
+  seachProduct();
+  productListFromLocal = getLocalStorage("cart");
+  if(productListFromLocal.length>0 && Array.isArray(productListFromLocal)){
+    productListFromLocal.forEach(item => {
+      productListCart.push(item);
+      renderCart();
+    })
+  }
+  else{
+   notHaveProduct();
+  }
+  document.querySelector(".quantityOfProducts").innerHTML = productListFromLocal.length;
+  // let mapProductList();
+}
+
+
+// ----------------------------------Tìm kiếm sản phẩm-----------------------------------
+export function seachProduct(){
+  let search = document.querySelector(".search__input");
+  search.addEventListener("input",()=>{
+    productList.innerHTML = "";
+    viewProductList.innerHTML = "";
+
+    // console.log(search.value)
+   let userSearch =  products.filter((value)=>{
+      return value.name.toLowerCase().includes(search.value.toLowerCase());
+    })
+  //  console.log(userSearch)
+  userSearch.forEach(item=>{
+    renderProduct(item)
+  showView();
+
+    // console.log(item)
+  })
+
+  })
+}
