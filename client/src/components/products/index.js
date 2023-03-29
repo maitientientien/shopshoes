@@ -99,4 +99,45 @@ export async function getFullProduct() {
   showView();
 
 }
+// ----------------------------Option chọn sản phẩm-------------------------
+let option = document.querySelector(".product__select");
+function renderOption(){
+  options.forEach(item=>{
+    let template = `<option  value="${item}">${item}</option>`;
+    // console.log(item);
+    if(item){
+      option.insertAdjacentHTML('beforeend',template);
+
+    }
+  })
+  SortName();
+}
+
+// ------------------------------------ Sắp xếp sản phẩm theo tên ---------------------
+ function SortName(){
+  let e = document.getElementById("product__select");
+  e.addEventListener("change",()=>{
+    // loader(true);
+    let giaTri = e.options[e.selectedIndex].text;
+    // console.log(giaTri)
+    productList.innerHTML = "";
+    viewProductList.innerHTML ="";
+    products.forEach(item=>{
+      if(item.category.includes(giaTri)){
+        // console.log(item)
+        renderProduct(item);
+        showView();
+      }
+      else if (giaTri=="All") {
+        renderProduct(item);
+         showView();
+
+      }
+      // loader(false)
+    })
+    
+  })
+  
+}
+
 
