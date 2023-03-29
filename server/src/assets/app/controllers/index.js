@@ -61,3 +61,76 @@ function renderProduct(item) {
     `;
     tbodyProduct.insertAdjacentHTML("beforeend", template);
   }
+
+// ----------------------------------- XÓA SẢN PHẨM -------------------------------
+async function deleteProduct(id) {
+  await fetch(`${endpoint}/${id}`, {
+    method: "DELETE",
+  });
+}
+async function getSingleProduct(id) {
+  const response = await fetch(`${endpoint}/${id}`);
+  const data = await response.json();
+  return data;
+}
+function deleteClick(id) {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
+  swalWithBootstrapButtons
+    .fire({
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+      title: "Bạn có chắc muốn xóa",
+      text: "Bạn sẽ không thể hoàn tác khi đã xóa",
+      icon: "question",
+      width: "50rem",
+      showCancelButton: true,
+      confirmButtonText: "Tiếp tục",
+      cancelButtonText: "Hủy",
+      reverseButtons: true,
+    })
+    .then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteProduct(id);
+        await getFullProduct();
+        swalWithBootstrapButtons.fire(
+          "Đã xóa!",
+          "Sản phẩm của bạn đã bị xóa",
+          "success"
+        );
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          "Đã hủy",
+          "Sản phẩm của bạn vẫn còn nhé!",
+          "error"
+        );
+      }
+    });
+}
+window.addEventListener("load", () => {
+  getFullProduct();
+});
+const template = ` <div class="loader">
+      <img src="../../assets/images/load.gif" alt="load">
+    </div>`;
+function loader(on) {
+  const load = document.querySelector(".loader");
+  if (on) {
+    document.body.insertAdjacentHTML("afterbegin", template);
+  } else {
+    document.body.removeChild(load);
+  }
+}
