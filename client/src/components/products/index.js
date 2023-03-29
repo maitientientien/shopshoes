@@ -68,3 +68,171 @@ export let products = [];
         viewProductList.insertAdjacentHTML("beforeend",templateView);
 }
 
+
+// -------------------------------- LẤY DANH SÁCH SẢN PHẨM TỪ API ---------------------
+export async function getFullProduct() {
+  loader(true);
+  try {
+    const respone = await fetch(enpoint);
+    const data = await respone.json();
+    // Kiểm tra xem có chắc chắn là có dữ liệu hay không, và dữ liệu đó có phải là mảng hay không rồi mới render ra giao diện
+    if (data.length > 0 && Array.isArray(data)) {
+      data.forEach(item => {
+        renderProduct(item);
+        let convert = item.category.split(" ")[0].replace("'s", "");
+        // console.log(typeof convert);
+        // Thêm vào Set
+        options.add(convert);
+        products.push(item);
+        // console.log(products);
+      })
+    }
+  } catch (error) {
+   renderSweetAlertError("Có lỗi xảy ra với hệ thống");
+  //  document.body.innerHTML = "";
+  }
+  loader(false);
+  renderOption();
+  addCart();
+  sortPrice();
+  randomNoti();
+  showView();
+
+}
+// ----------------------------Option chọn sản phẩm-------------------------
+let option = document.querySelector(".product__select");
+function renderOption(){
+  options.forEach(item=>{
+    let template = `<option  value="${item}">${item}</option>`;
+    // console.log(item);
+    if(item){
+      option.insertAdjacentHTML('beforeend',template);
+
+    }
+  })
+  SortName();
+}
+
+// ------------------------------------ Sắp xếp sản phẩm theo tên ---------------------
+ function SortName(){
+  let e = document.getElementById("product__select");
+  e.addEventListener("change",()=>{
+    // loader(true);
+    let giaTri = e.options[e.selectedIndex].text;
+    // console.log(giaTri)
+    productList.innerHTML = "";
+    viewProductList.innerHTML ="";
+    products.forEach(item=>{
+      if(item.category.includes(giaTri)){
+        // console.log(item)
+        renderProduct(item);
+        showView();
+      }
+      else if (giaTri=="All") {
+        renderProduct(item);
+         showView();
+
+      }
+      // loader(false)
+    })
+    
+  })
+  
+}
+
+// ---------------------------------------------Sắp xếp theo giá-----------------------
+export function sortPrice(){
+  let tempt = [];
+  let e = document.getElementById("price__select");
+  e.addEventListener("change", () => {
+    let giaTri = e.options[e.selectedIndex].text;
+    let down = giaTri.toLowerCase().includes("cao đến thấp");
+    productList.innerHTML = "";
+    viewProductList.innerHTML = "";
+
+      if(down){
+        for(let i=0;i<products.length;i++){
+          for(let j=i+1;j<products.length;j++){
+            if(products[j].price>products[i].price){
+              tempt = products[j];
+              products[j] = products[i];
+              products[i] = tempt;
+            }
+            
+          }
+          renderProduct(products[i]);
+          showView();
+
+          // console.log(products[i]);
+        }
+      }
+      else{
+         for (let i = 0; i < products.length; i++) {
+           for (let j = i + 1; j < products.length; j++) {
+             if (products[j].price < products[i].price) {
+               tempt = products[j];
+               products[j] = products[i];
+               products[i] = tempt;
+             }
+
+           }
+           renderProduct(products[i]);
+            showView();
+
+           // console.log(products[i]);
+         }
+      }
+  })
+}
+
+// -------------------------------- Khi window load xong--------------------------
+window.onload = ()=>{
+  let productListFromLocal;
+  getFullProduct();
+  seachProduct();
+  productListFromLocal = getLocalStorage("cart");
+  if(productListFromLocal.length>0 && Array.isArray(productListFromLocal)){
+    productListFromLocal.forEach(item => {
+      productListCart.push(item);
+      renderCart();
+    })
+  }
+  else{
+   notHaveProduct();
+  }
+  document.querySelector(".quantityOfProducts").innerHTML = productListFromLocal.length;
+  // let mapProductList();
+}
+
+
+// ----------------------------------Tìm kiếm sản phẩm-----------------------------------
+export function seachProduct(){
+  let search = document.querySelector(".search__input");
+  search.addEventListener("input",()=>{
+    productList.innerHTML = "";
+    viewProductList.innerHTML = "";
+
+    // console.log(search.value)
+   let userSearch =  products.filter((value)=>{
+      return value.name.toLowerCase().includes(search.value.toLowerCase());
+    })
+  //  console.log(userSearch)
+  userSearch.forEach(item=>{
+    renderProduct(item)
+  showView();
+
+    // console.log(item)
+  })
+
+  })
+}
+
+// -------------------------- Khi chưa có sản phẩm trong giỏ hàng-----------------
+
+export function notHaveProduct(){
+   let template = `<h3 class="sad" >Chưa có sản phẩm nào trong giỏ hàng</h3>
+    <img src="../assets/icons/sad.png" style="width:300px" class="mt-5 mx-auto sad"/>`
+   document.querySelector(".cartPage__body").style.display = "none";
+   document.querySelector(".cartPage__footer").style.display = "none";
+   document.querySelector(".cartPage__content").insertAdjacentHTML("beforeend", template);
+}
