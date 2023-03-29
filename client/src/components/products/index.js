@@ -68,3 +68,35 @@ export let products = [];
         viewProductList.insertAdjacentHTML("beforeend",templateView);
 }
 
+
+// -------------------------------- LẤY DANH SÁCH SẢN PHẨM TỪ API ---------------------
+export async function getFullProduct() {
+  loader(true);
+  try {
+    const respone = await fetch(enpoint);
+    const data = await respone.json();
+    // Kiểm tra xem có chắc chắn là có dữ liệu hay không, và dữ liệu đó có phải là mảng hay không rồi mới render ra giao diện
+    if (data.length > 0 && Array.isArray(data)) {
+      data.forEach(item => {
+        renderProduct(item);
+        let convert = item.category.split(" ")[0].replace("'s", "");
+        // console.log(typeof convert);
+        // Thêm vào Set
+        options.add(convert);
+        products.push(item);
+        // console.log(products);
+      })
+    }
+  } catch (error) {
+   renderSweetAlertError("Có lỗi xảy ra với hệ thống");
+  //  document.body.innerHTML = "";
+  }
+  loader(false);
+  renderOption();
+  addCart();
+  sortPrice();
+  randomNoti();
+  showView();
+
+}
+
