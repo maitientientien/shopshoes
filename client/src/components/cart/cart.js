@@ -257,7 +257,73 @@ function minusAmount() {
   }
 
 }
+// ---------------------------------CHỌN TẤT CẢ--------------------------------------
+// function selectedAll(){
 
+//   return checkArr;
+// }
+let checkArr = [];
+function deleteByCheckBox() {
+  let check = document.querySelectorAll(".check-cart");
+  [...check].forEach(item => {
+    // console.log(item);
+    item.addEventListener("click", () => {
+      // item.checked = "true";
+      if (item.checked) {
+        const idcheck = +item.dataset.checkbox;
+        for (let i = 0; i < productListCart.length; i++) {
+          if (idcheck == +productListCart[i].productCard[0].id) {
+            checkArr.push(productListCart[i]);
+          }
+        }
+      }
+    })
+  })
+  let selectAll = document.querySelector("#SelectAll");
+  selectAll.addEventListener("click", () => {
+    if (selectAll.checked) {
+      check.forEach(item => {
+        // console.log(item);
+        item.checked = true;
+        const idcheck = +item.dataset.checkbox;
+        for (let i = 0; i < productListCart.length; i++) {
+          if (idcheck == +productListCart[i].productCard[0].id) {
+            checkArr.push(productListCart[i]);
+          }
+        }
+        // console.log(item);
+        
+        // ---------------------------lọc ra những phần tử trùng-------------------
+        let new2 = checkArr.filter((item, index) => checkArr.indexOf(item) === index);
+        checkArr = new2;
+        // console.log(new2);
+        item.addEventListener("click", () => {
+          if (!item.checked) {
+
+            // khi người dùng nhấn vào nút checkbox lần nữa 
+            //=> có nghĩa là người dùng đã xóa những phần tử đó ở trong mảng checkArr 
+            const idcheck = +item.dataset.checkbox;
+            for (let i = 0; i < checkArr.length; i++) {
+              if (idcheck == +checkArr[i].productCard[0].id){
+                //  productListCart.splice(productListCart[id], 1);
+                // checkArr.splice(checkArr[i],1);
+                console.log(checkArr[i])                      
+              }
+            }
+            console.log(checkArr)   
+          }
+      })
+      })
+    } else if (!selectAll.checked) {
+      check.forEach(item => {
+        item.checked = false;
+        checkArr.splice(0);
+      })
+    }
+    
+  })
+
+}
 // ------------------------------------SỬ LÝ LOCALSTORAGE---------------------------
 
 // Lưu vào localStorage
