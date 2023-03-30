@@ -74,6 +74,7 @@ export async function getFullProduct() {
   loader(true);
   try {
     const respone = await fetch(enpoint);
+    console.log("respone:", respone);
     const data = await respone.json();
     // Kiểm tra xem có chắc chắn là có dữ liệu hay không, và dữ liệu đó có phải là mảng hay không rồi mới render ra giao diện
     if (data.length > 0 && Array.isArray(data)) {
