@@ -197,6 +197,66 @@ function plusAmount() {
   })
 }
 
+//------------------------------------GIẢM SẢN PHẨM------------------------------
+function minusAmount() {
+  let minus = document.querySelectorAll(".minus");
+  for (let i = 0; i < productListCart.length; i++) {
+    minus.forEach(item => {
+      item.addEventListener("click", () => {
+        if (+item.dataset.mcart == +productListCart[i].productCard[0].id) {
+          if (productListCart[i].quanlity <= 1) {
+            const swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+              },
+              buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+              title: 'Bạn có chắc muốn xóa',
+              text: "Bạn sẽ không thể hoàn tác khi đã xóa",
+              icon: 'question',
+              width: '50rem',
+              showCancelButton: true,
+              confirmButtonText: 'Tiếp tục',
+              cancelButtonText: 'Hủy',
+              reverseButtons: true
+            }).then((result) => {
+              if (result.isConfirmed) {
+                productListCart.splice(productListCart[i], 1);
+                renderCart();
+                swalWithBootstrapButtons.fire(
+                  'Đã xóa!',
+                  'Sản phẩm của bạn đã bị xóa',
+                  'success'
+                )
+              } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                swalWithBootstrapButtons.fire(
+                  'Đã hủy',
+                  'Sản phẩm của bạn vẫn còn nhé!',
+                  'error'
+                )
+              }
+            })
+
+            return;
+          } else {
+            productListCart[i].quanlity--;
+            // console.log(productListCart[i].quanlity);
+            renderCart();
+
+
+          }
+        }
+      })
+    })
+  }
+
+}
 
 // ------------------------------------SỬ LÝ LOCALSTORAGE---------------------------
 
