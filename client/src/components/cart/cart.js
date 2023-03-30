@@ -148,6 +148,19 @@ export function addCart() {
     })
   })
 }
+// ----------------------------- TỔNG TIỀN -------------------------------------------
+function totalProduct() {
+  // console.log(intoMoney)
+  let total = 0;
+  for (let i = 0; i < productListCart.length; i++) {
+    total += productListCart[i].productCard[0].price * productListCart[i].quanlity;
+  }
+
+
+  document.querySelector("#totalProduct").innerHTML = convert.format(total);
+  // console.log(total);
+  return total;
+}
 
 // ------------------------------------SỬ LÝ LOCALSTORAGE---------------------------
 
