@@ -162,6 +162,42 @@ function totalProduct() {
   return total;
 }
 
+// ----------------------------------- TĂNG SẢN PHẨM--------------------------------------
+function plusAmount() {
+  let plus = document.querySelectorAll(".plus");
+  let sum = 0;
+  [...plus].forEach(item => {
+    item.addEventListener("click", (e) => {
+      // console.log(item)
+      const id = +item.dataset.pcart;
+      for (let i = 0; i < productListCart.length; i++) {
+        let amount = productListCart[i].productCard[0].amount;
+
+        if (id == +productListCart[i].productCard[0].id) {
+          // console.log(id)
+          // console.log(id, productListCart)
+          if (productListCart[i].quanlity >= amount) {
+            renderSweetAlertError(`Bạn chỉ được mua tối đa ${amount} trong 1 đơn hàng`);
+            productListCart[i].quanlity = amount;
+            item.disabled = true;
+            item.style.pointerEvents = "none";
+            // renderCart();
+            return;
+          } else {
+            productListCart[i].quanlity++;
+            // console.log(productListCart);
+            renderCart();
+          }
+        }
+        // console.log(item)
+      }
+      // renderCart();
+
+    })
+  })
+}
+
+
 // ------------------------------------SỬ LÝ LOCALSTORAGE---------------------------
 
 // Lưu vào localStorage
